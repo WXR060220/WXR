@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/WXR/img/fluid.png">
+  <link rel="icon" href="/WXR/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1月22日 12.CDN绕过篇绕过CDN寻找网站真实IP的方法汇总0x00 写在前面工作所需，将”绕过CDN寻找网站真实IP“的方法进行汇总。打开笔记，发现保存了好几篇以前收集的一些相关文章。文章都比较类似，方法大同小异，做个汇总，也添加一些自己积累。 0x01 判断ip是否为网站真实ip这个就很简单了，简单说下几个常见的方法：  \1. Nslookup:  Win下使用nslookup命令进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://wxr060220.github.io/WXR/2025/01/22/1%E6%9C%8822%E6%97%A5%E5%B0%8F%E8%BF%AA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1月22日 12.CDN绕过篇绕过CDN寻找网站真实IP的方法汇总0x00 写在前面工作所需，将”绕过CDN寻找网站真实IP“的方法进行汇总。打开笔记，发现保存了好几篇以前收集的一些相关文章。文章都比较类似，方法大同小异，做个汇总，也添加一些自己积累。 0x01 判断ip是否为网站真实ip这个就很简单了，简单说下几个常见的方法：  \1. Nslookup:  Win下使用nslookup命令进行">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-d00e05abb41981747e31d40de874f0be_1440w.jpg">
+<meta property="og:image" content="https://pica.zhimg.com/v2-08837052108dff025cdfe74abb3019f6_1440w.jpg">
+<meta property="og:image" content="https://picx.zhimg.com/v2-ba03b2ba76774558f43c2a236e5dd01b_1440w.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-3b2ed4f8f960f15e7395ae40bbdde9d8_1440w.jpg">
+<meta property="og:image" content="https://picx.zhimg.com/v2-1d46a394cc182cb05ab72570ab878a9d_1440w.jpg">
+<meta property="og:image" content="https://picx.zhimg.com/v2-aa021ba382a8eb80108768a9dbc73d99_1440w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-0d4e7b4ec86d45f8dc5cc8eb93768b3a_1440w.jpg">
+<meta property="article:published_time" content="2025-01-22T05:23:03.055Z">
+<meta property="article:modified_time" content="2025-01-22T05:25:32.589Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-d00e05abb41981747e31d40de874f0be_1440w.jpg">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/WXR/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/WXR/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/WXR/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wxr060220.github.io","root":"/WXR/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/WXR/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/WXR/js/utils.js" ></script>
+  <script  src="/WXR/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/WXR/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/WXR/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/WXR/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/WXR/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/WXR/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/WXR/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/WXR/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-22 13:23" pubdate>
+          2025年1月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>1月22日</p>
+<h1 id="12-CDN绕过篇"><a href="#12-CDN绕过篇" class="headerlink" title="12.CDN绕过篇"></a>12.CDN绕过篇</h1><h2 id="绕过CDN寻找网站真实IP的方法汇总"><a href="#绕过CDN寻找网站真实IP的方法汇总" class="headerlink" title="绕过CDN寻找网站真实IP的方法汇总"></a>绕过CDN寻找网站真实IP的方法汇总</h2><h2 id="0x00-写在前面"><a href="#0x00-写在前面" class="headerlink" title="0x00 写在前面"></a><strong>0x00 写在前面</strong></h2><p>工作所需，将”绕过CDN寻找网站真实IP“的方法进行汇总。打开笔记，发现保存了好几篇以前收集的一些相关文章。文章都比较类似，方法大同小异，做个汇总，也添加一些自己积累。</p>
+<h2 id="0x01-判断ip是否为网站真实ip"><a href="#0x01-判断ip是否为网站真实ip" class="headerlink" title="0x01 判断ip是否为网站真实ip"></a><strong>0x01 判断ip是否为网站真实ip</strong></h2><p>这个就很简单了，简单说下几个常见的方法：</p>
+<blockquote>
+<p>\1. Nslookup:</p>
+</blockquote>
+<p>Win下使用nslookup命令进行查询，若返回<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90&zhida_source=entity">域名解析</a>结果为多个ip，多半使用了CDN，是不真实的ip。</p>
+<p><img src="https://pic3.zhimg.com/v2-d00e05abb41981747e31d40de874f0be_1440w.jpg" srcset="/WXR/img/loading.gif" lazyload alt="img"></p>
+<blockquote>
+<p>\2. 多地ping查询</p>
+</blockquote>
+<p>使用不同区域ping，查看ping的ip结果是否唯一。若不唯一，则目标网站可能存在CDN。</p>
+<p>网站有：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html">https://asm.ca.com/en/ping.php/<br>http://ping.chinaz.com/<br>https://ping.aizhan.com/<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pica.zhimg.com/v2-08837052108dff025cdfe74abb3019f6_1440w.jpg" srcset="/WXR/img/loading.gif" lazyload alt="img"></p>
+<blockquote>
+<p>\3. 使用工具直接查询</p>
+</blockquote>
+<p>参见如下网站：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">http://www.cdnplanet.com/tools/cdnfinder/<br>https://www.ipip.net/ip.html<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://picx.zhimg.com/v2-ba03b2ba76774558f43c2a236e5dd01b_1440w.jpg" srcset="/WXR/img/loading.gif" lazyload alt="img"></p>
+<h2 id="0x02-绕过CDN查找真实ip-方法整理如下："><a href="#0x02-绕过CDN查找真实ip-方法整理如下：" class="headerlink" title="0x02 绕过CDN查找真实ip  方法整理如下："></a><strong>0x02 绕过CDN查找真实ip</strong>  方法整理如下：</h2><blockquote>
+<p>\1. <a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=%E5%AD%90%E5%9F%9F%E5%90%8D&zhida_source=entity">子域名</a>入手</p>
+</blockquote>
+<p>某些企业业务线众多，有些站点的主站使用了CDN，或者部分域名使用了CDN，某些子域名可能未使用。查询子域名的方法就很多了：subDomainsBrute、Sublist3r、Google hack等。</p>
+<p>还有某些网站可以进行查询。例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://dnsdb.io/zh-cn/<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic1.zhimg.com/v2-3b2ed4f8f960f15e7395ae40bbdde9d8_1440w.jpg" srcset="/WXR/img/loading.gif" lazyload alt="img"></p>
+<blockquote>
+<p>\2. 利用网站漏洞</p>
+</blockquote>
+<p>如果目标站点存在漏洞，这就没办法避免了。例如phpinfo敏感信息泄露、Apache status和Jboss status敏感信息泄露、网页<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=%E6%BA%90%E4%BB%A3%E7%A0%81&zhida_source=entity">源代码</a>泄露、svn信息泄露信、github信息泄露等。</p>
+<p>若存在<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=web%E6%BC%8F%E6%B4%9E&zhida_source=entity">web漏洞</a>，服务器主动与我们发起请求连接，我们也能获取目标站点真实ip。例如<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=xss&zhida_source=entity">xss</a>、ssrf、命令执行反弹shell等。</p>
+<blockquote>
+<p>\3. 历史DNS记录</p>
+</blockquote>
+<p>查询ip与域名绑定历史记录，可能会发现使用CDN之前的目标ip。查询网站有：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">https://dnsdb.io/zh-cn/<br>https://x.threatbook.cn/<br>http://toolbar.netcraft.com/site_report?url=<br>http://viewdns.info/<br>http://www.17ce.com/<br>https://community.riskiq.com/<br>http://www.crimeflare.com/cfssl.html<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://picx.zhimg.com/v2-1d46a394cc182cb05ab72570ab878a9d_1440w.jpg" srcset="/WXR/img/loading.gif" lazyload alt="img"></p>
+<blockquote>
+<p>\4. CDN本身入手</p>
+</blockquote>
+<p>若从CDN本身入手，比如利用<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=%E7%A4%BE%E5%B7%A5&zhida_source=entity">社工</a>等，得到控制面板的账号密码，那真实ip就很轻易能获取到了。</p>
+<blockquote>
+<p>\5. Mx记录或邮件</p>
+</blockquote>
+<p>很多站点都有发送邮件sendmail的功能，如Rss邮件订阅等。而且一般的邮件系统很多都是在内部，没有经过CDN的解析。可在邮件源码里面就会包含服务器的真实 IP。</p>
+<p><img src="https://picx.zhimg.com/v2-aa021ba382a8eb80108768a9dbc73d99_1440w.jpg" srcset="/WXR/img/loading.gif" lazyload alt="img"></p>
+<blockquote>
+<p>\6. 国外请求</p>
+</blockquote>
+<p>通过国外得一些冷门得DNS或IP去请求目标，很多时候国内得CDN对国外得覆盖面并不是很广，故此可以利用此特点进行探测。 通过国外代理访问就能查看真实IP了，或者通过国外的DNS解析，可能就能得到真实的IP查询网站：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://asm.ca.com/en/ping.php<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>\7. 扫描探测</p>
+</blockquote>
+<p>通过信息收集，缩小扫描范围，确定一个相对小的IP和端口范围（中国？AS号？B段？等）</p>
+<p>通过http指纹特征和keyword等做综合判断。可使用工具如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">https://github.com/zmap/zgrab/<br>http://www.ipdeny.com/ipblocks/<br></code></pre></td></tr></table></figure>
+
+<p><em>zgrab 是基于zmap无状态扫描的应用层扫描器,可以自定义数据包，以及ip、domain之间的关联。可用于快速指纹识别爆破等场景。</em></p>
+<p>可参考这篇文章：<a href="https://link.zhihu.com/?target=https://levyhsu.com/2017/05/%E5%88%A9%E7%94%A8zgrab%E7%BB%95cdn%E6%89%BE%E7%9C%9F%E5%AE%9Eip/">利用Zgrab绕CDN找真实IP - Levy Hsu</a></p>
+<blockquote>
+<p>\8. Zmap大法？</p>
+</blockquote>
+<p>据说扫描全网，只要44分钟？</p>
+<p>可参考这篇文章：<a href="https://link.zhihu.com/?target=http://bobao.360.cn/learning/detail/211.html">简单获取CDN背后网站的真实IP - 安全客 - 有思想的安全新媒体</a></p>
+<blockquote>
+<p>\9. <a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4&zhida_source=entity">网络空间</a>引擎搜索法</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=zoomeye&zhida_source=entity">zoomeye</a>、fofa、shodan</p>
+<p>通过这些公开的安全搜索引擎爬取得历史快照，主要得一些特征总结如下：</p>
+<p>特有的http头部（如server类型、版本、cookie等信息)、</p>
+<p>特定keyword（如title、css、js、url等）、</p>
+<p>特定的IP段搜索（如fofa支持C段搜索），</p>
+<p>有些时候爬取的时候不一定含有上面那些特征，但是我们仍然需要仔细排查。</p>
+<blockquote>
+<p>\10. 查询Https证书</p>
+</blockquote>
+<p>此方法来自于去年CplusHua表哥在Freebuf公开课《HTTP盲攻击的几种思路》中分享的：</p>
+<p>查询网站：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">https://censys.io/<br></code></pre></td></tr></table></figure>
+
+<p>这个网址会将互联网所有的ip进行扫面和连接，以及证书探测。若目标站点有https证书，并且默认<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA&zhida_source=entity">虚拟主机</a>配了https证书，我们就可以找所有目标站点是该https证书的站点。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">443.https.tls.certificate.parsed.extensions.subject_alt_name.dns_names:www.xxx.com<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic3.zhimg.com/v2-0d4e7b4ec86d45f8dc5cc8eb93768b3a_1440w.jpg" srcset="/WXR/img/loading.gif" lazyload alt="img"></p>
+<blockquote>
+<p>\11. F5 LTM 负载均衡解码获取真实内网ip</p>
+</blockquote>
+<p>之前看了这篇文章：<a href="https://link.zhihu.com/?target=https://threathunter.org/topic/5940c85d9c58e020408a79fe">透过F5获取服务器真实内网IP - ThreatHunter</a></p>
+<p>我就在想，假如目标站点有CDN，是否就跟F5做负载均衡冲突了？是否需要找到目标站点 真实ip，才能通过F5获取目标真实内网ip？所以以为可能该方法不能用来绕过CDN获取真实IP。</p>
+<p>今天咨询了下hblf表哥：他说应该不会冲突，之前碰到过案例：某企业先在内网出口使用F5做ISP的<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=5565538&content_type=Article&match_order=1&q=%E9%93%BE%E8%B7%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1&zhida_source=entity">链路负载均衡</a>，然后再用CDN加速。这样的话，客户端还是可以看到F5埋的那个cookie。而且经过CDN，埋的cookie不会被修改或者删除，所以客户端还是可以看到。</p>
+<p>通过解码就可以得到目标服务器真实内网ip。具体方法和原理参见hblf表哥的这篇文章。</p>
+<p>所以就把该方法也总结在这儿。</p>
+<h2 id="汇总"><a href="#汇总" class="headerlink" title="汇总"></a>汇总</h2><ol>
+<li>验证是否存在CDN最简单的办法<ol>
+<li>通过在线的多地ping，通过每个地区ping的结果得到IP。</li>
+<li>看这些IP是否一致，如果都是一样的，极大可能不存在cdn,但不绝对。</li>
+<li>如果这些IP大多数都不太一样或者规律性很强，可以尝试查询这些IP的归属地，判断是否存在CDN。</li>
+</ol>
+</li>
+<li>验证IP和域名是否真实对应最简单的办法<ol>
+<li>修改本地hosts文件，强行将域名与IP解析对应。</li>
+<li>然后访问域名查看页面是否变化。</li>
+</ol>
+</li>
+<li>ping<ol>
+<li>假设如下存在cdn —-&gt; ping <a target="_blank" rel="noopener" href="http://www.sysorem.xyz/">www.sysorem.xyz</a></li>
+<li>可以尝试ping sysorem.xyz，很多厂商可能让www使用cdn，空域名不是有cdn缓存。</li>
+<li>所以直接ping sysorem.xyz可能就能得到真实IP。</li>
+</ol>
+</li>
+<li>分站域名<ol>
+<li>很多网站主站的访问量会比较大，所以往往主站都挂着cdn的。</li>
+<li>但是分站就不一定了，毕竟cdn要钱，而且也不便宜。</li>
+<li>所以可能一些分站就没有挂着cdn，所以有时候可以尝试通过查看分站IP。</li>
+<li>可能是同个IP或者同个站都是没准的。</li>
+</ol>
+</li>
+<li>国外访问<ol>
+<li>国内的CDN往往只会针对国内用户访问加速。</li>
+<li>所以国外就不一定了。因此通过国外代理访问就能查看真实IP了。</li>
+<li>或者通过国外的DNS解析，可能就能得到真实的IP。</li>
+</ol>
+</li>
+<li>MX及邮件<ol>
+<li>mx记录查询，一般会是C段。</li>
+<li>一些网提供注册服务，可能会验证邮件，还有RSS订阅邮件，忘记密码等</li>
+<li>可能服务器本身自带sendmail可以直接发送邮件，当然使用第三方的除外（如网易，腾讯等）</li>
+<li>当然这个IP也要验证是否为主站的</li>
+<li>web版的邮件管理，可以通过常看网页源代码看到IP</li>
+</ol>
+</li>
+<li>xss<ol>
+<li>水坑式攻击，是让服务器主动连接我们的一种方式。</li>
+</ol>
+</li>
+<li>找phpinfo()之类的探针</li>
+<li>DOS<ol>
+<li>DDoS耗尽CDN流量，那么就会回源，这样就能得到真实IP</li>
+<li>不设防的cdn量大就会挂，高防cdn要增大流量。</li>
+</ol>
+</li>
+<li>社会工程学</li>
+<li>查看历史</li>
+<li>DNS社工库</li>
+<li>cloudflare</li>
+<li>全网扫描<ol>
+<li>zmap号称44分扫描全网</li>
+</ol>
+</li>
+<li>链接：<a target="_blank" rel="noopener" href="https://www.sysorem.xyz/2016/07/23/get-real-ip-under-cdn/">https://www.sysorem.xyz/2016/07/23/get-real-ip-under-cdn/</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/milantgh/p/5013254.html">http://www.cnblogs.com/milantgh/p/5013254.html</a> 这篇文章写得很详细，不错</li>
+<li><a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/web/41533.html">http://www.freebuf.com/articles/web/41533.html</a>  实例绕过</li>
+</ol>
+<p> 案例资源：<br>超级Ping：<a target="_blank" rel="noopener" href="https://www.17ce.com/">https://www.17ce.com/</a><br>接口查询：<a target="_blank" rel="noopener" href="https://get-site-ip.com/">https://get-site-ip.com/</a><br>国外请求：<a target="_blank" rel="noopener" href="https://tools.ipip.net/cdn.php">https://tools.ipip.net/cdn.php</a><br>全网扫描：<a target="_blank" rel="noopener" href="https://github.com/Tai7sy/fuckcdn">https://github.com/Tai7sy/fuckcdn</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://wxr060220.github.io/WXR/2025/01/22/1月22日小迪/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/WXR/2025/01/20/1%E6%9C%88%E4%BA%8C%E5%8D%81%E5%8F%B7%E9%A2%98%E8%A7%A3/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/WXR/js/events.js" ></script>
+<script  src="/WXR/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/WXR/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/WXR/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/WXR/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
